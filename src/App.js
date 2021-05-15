@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Login from './security/Login';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import CreateUserByEmail from './Views/CreateUserByEmail';
+import Prueba from './Views/Prueba';
+import RegistrarUsuarios from './components/Seguridad/RegistrarUsuarios';
+import RegistrarUsuariosByGoogle from './components/Seguridad/RegistrarUsuariosByGoogle';
+import RegistrarUsuarioByFB from './components/Seguridad/RegistrarUsuarioByFB';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export default () => {
+	return (
+		<Router>
+			<Route path='/' exact component={RegistrarUsuarios} />
+			<Route
+				path='/RegistroGoogle'
+				exact
+				component={RegistrarUsuariosByGoogle}
+			/>
+			<Route path='/RegistroFB' exact component={RegistrarUsuarioByFB} />
+			<Route path='/login' exact component={Login} />
+			<Route path='/prueba' component={Prueba} />
+		</Router>
+	);
+};
